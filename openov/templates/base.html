@@ -1,0 +1,53 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <title>{% block title %}{% block helpdesk_title %}Aanmelden{% endblock %}{% endblock %} :: OpenOV</title>
+	      <meta name="description" content="OpenOV" />
+        <script src='{{ STATIC_URL }}helpdesk/jquery-1.5.min.js' type='text/javascript' language='javascript'></script>
+        <script src='{{ STATIC_URL }}helpdesk/jquery-ui-1.8.9.custom.min.js' type='text/javascript' language='javascript'></script>
+        {% comment %}
+        <script src='{{ STATIC_URL }}helpdesk/jquery.translate-debug-all.js' type='text/javascript' language='javascript'></script>
+        {% endcomment %}
+		<link rel='stylesheet' href='{{ STATIC_URL }}bootstrap.min.css' type='text/css' />
+		<link rel='stylesheet' href='{{ STATIC_URL }}bootstrap-responsive.min.css' type='text/css' />
+		<link rel='stylesheet' href='{{ STATIC_URL }}bootstrap.addons.css' type='text/css' />
+    <link rel='stylesheet' href='http://www.openov.nl/wp-content/themes/openov/style.css' type='text/css' />
+
+    <link rel='stylesheet' href='{{ STATIC_URL }}helpdesk/jquery-smoothness-theme/jquery-ui-1.8.9.custom.css' type='text/css' />
+        {% block helpdesk_head %}{% endblock %}
+    </head>
+    <body>
+        <div class='container'>
+            <header>
+                <hr>
+                <nav>
+                    <ul>
+                        <li><a href="./" title="Terug naar het begin">startpagina</a></li>
+                        <li><a href="./?page_id=7" title="Reisinformatie ontvangen">api</a></li>
+                        <li><a href="/zones/" title="Zonekaart van Nederland">zones</a></li>
+                      <!--  <li><a href="./?page_id=9" title="Informatie over het project openOV">over ons</a></li>
+                       <li><a href="./" title="Apps met openOV data">apps</a></li> -->
+                    </ul>
+                </nav>
+            </header>
+            <div id="intro">
+              <img src="http://openov.nl/wp-content/themes/openov/tmp/image.png">
+                <h1>vrij van a naar b</h1>
+                <p>We werken samen aan het publiek beschikbaar maken <br>
+                  van hoogwaardige geplande en actuele reisinformatie,<br>
+                  vrij toegankelijk voor iedereen.</p>
+
+                <a href="./?page_id=7" class="button large"><span>Naar de API</span></a>
+                <img src="http://openov.nl/images/openov.png" style="float:right;">
+            </div>
+            <div id='body'>
+                {% block helpdesk_body %}{% endblock %}
+            </div>
+
+            <footer class='footer'>
+
+            </footer>
+        </div>
+    </body>
+</html>

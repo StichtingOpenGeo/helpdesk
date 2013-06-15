@@ -25,25 +25,19 @@ DATABASES = {
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+# Local time zone for this installation.
+TIME_ZONE = 'Europe/Amsterdam'
 
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+# Language code for this installation.
+LANGUAGE_CODE = 'nl'
 
 SITE_ID = 1
 
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
+# Load internationalization
 USE_I18N = True
-
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale.
 USE_L10N = True
+
+LOCALE_PATHS= ('locale/', )
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
@@ -69,9 +63,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    'openov/static',
 )
 
 # List of finder classes that know how to find static files in
@@ -83,7 +75,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '4_v=#mm-dhi!q$(h1ktwms!@wi5y!rim3^ui*x!awa53q=0m6g'
+SECRET_KEY = '4_v=#mm-dhi!q$(h1kts34aaa223@#!@#y!rim3^ui*x!awa53q=0m6g'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -108,22 +100,30 @@ ROOT_URLCONF = 'openov.urls'
 WSGI_APPLICATION = 'openov.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+                 'openov/templates',
 )
 
 INSTALLED_APPS = (
+    # Default Django
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+
+    # Our apps
+    'signup',
+
+    # Other reqs
+    'south',
+
+    # Dev
+    'rosetta',
+
+    # Admin
+    'django_admin_bootstrapped',
+    'django.contrib.admin'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -154,3 +154,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from local_settings import *
+except ImportError:
+    pass

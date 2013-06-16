@@ -39,7 +39,7 @@ class SignupQueue(models.Model):
     def create_user(self):
       ''' Create a new account with a random password and make sure we have a unique username '''
       if self.user is not None:
-        return (None, None)
+        return (self.user.username, None)
 
 
       password = User.objects.make_random_password()

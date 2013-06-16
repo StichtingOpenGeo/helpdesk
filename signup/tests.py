@@ -21,8 +21,8 @@ class CreateUserTestCase(TestCase):
     self.assertEqual(result[0], "johndoe")
     self.assertIsNotNone(result[1])
 
-    # Now try again
-    self.assertEqual(req.create_user(), (None, None))
+    # Now try again - we get the user back, not a password
+    self.assertEqual(req.create_user(), ("johndoe", None))
 
   def testCreateUserNameAlreadyExists(self):
     req = SignupQueue.objects.get(organization="ABC Inc.")
